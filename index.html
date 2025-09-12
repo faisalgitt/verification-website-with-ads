@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula Gen Free Mcfa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --text: #2b2d42;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --discord: #5865F2;
+            --success: #4BB543;
+            --warning: #ffcc00;
+            --danger: #ff4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+        
+        .content-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .ad-container {
+            width: 100%;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        #custom-banner-ad {
+            display: inline-block;
+            max-width: 728px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        #custom-banner-ad:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        #custom-banner-ad img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+        }
+        
+        .btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn:active:not(:disabled) {
+            transform: translateY(1px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .btn:hover:not(:disabled)::after {
+            opacity: 1;
+        }
+        
+        /* New Button Variants */
+        .btn-success {
+            background: linear-gradient(to right, var(--success), #3a9a3a);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(to right, var(--warning), #e6b800);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(to right, var(--danger), #cc0000);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        #ad-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        #countdown {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+        
+        #ad-frame {
+            width: 95%;
+            height: 70vh;
+            border: none;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+            margin: 2rem auto;
+        }
+        
+        .cooldown-message {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+            display: none;
+        }
+
+        .advanced-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .advanced-content h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .advanced-content p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .advanced-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .advanced-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .advanced-content li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            margin: 3rem 0;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 4rem;
+            color: rgba(67, 97, 238, 0.1);
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            text-align: right;
+        }
+        
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .faq-question {
+            padding: 1rem 1.5rem;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .faq-question:hover {
+            background: #f9f9f9;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            background: white;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: auto;
+            backdrop-filter: blur(5px);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--discord);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+        }
+        
+        .discord-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.4);
+            background-color: #4752c4;
+        }
+        
+        .discord-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 0.5rem;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.8rem;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification i {
+            margin-right: 10px;
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 50px;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .badge-success {
+            background: var(--success);
+        }
+        
+        .badge-warning {
+            background: var(--warning);
+            color: var(--dark);
+        }
+        
+        .badge-danger {
+            background: var(--danger);
+        }
+        
+        /* Animation Keyframes */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .content-card {
+                padding: 1.5rem;
+            }
+            
+            #ad-frame {
+                height: 60vh;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .advanced-content {
+                padding: 1.5rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            #ad-frame {
+                height: 50vh;
+            }
+            
+            footer {
+                padding: 1.5rem 0;
+            }
+
+            .advanced-content {
+                padding: 1rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <header class="animate__animated animate__fadeIn">
+            <h1>Nebula Gen Verification</h1>
+            <p>Unlock exclusive content with our secure verification process</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </header>
+        
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '230b7a9246c8f2182783fbb72be02722',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/230b7a9246c8f2182783fbb72be02722/invoke.js"></script>
+        </div>
+        
+        <div class="content-card animate__animated animate__fadeInUp">
+            <h2>Instant Access to Premium Features <span class="badge pulse">NEW</span></h2>
+            <p>Gain immediate entry to our premium content library after completing our quick verification steps. Our system ensures fair access for all users while maintaining the highest quality standards.</p>
+            
+            <!-- Custom Clickable Banner Ad -->
+            <div class="ad-container">
+                <script async="async" data-cfasync="false" src="//pl27356702.profitableratecpm.com/95942ecac9540ad7b9f6eafdce05056f/invoke.js"></script>
+                <div id="container-95942ecac9540ad7b9f6eafdce05056f"></div>
+            </div>
+            
+            <!-- Access Button -->
+            <div style="text-align: center;">
+                <button id="access-button" class="btn floating">
+                    <i class="fas fa-lock-open"></i> Click Here To Get Access
+                </button>
+                <div id="cooldown-message" class="cooldown-message">
+                    Please wait <span id="cooldown-timer">5</span> seconds before trying again
+                </div>
+            </div>
+                            <!-- Custom Banner Ad -->
+        
+        </div>
+        
+        <!-- Custom Banner Ad -->
+        <div id="custom-banner-ad" class="animate__animated animate__fadeIn">
+            <a href="" target="_blank">
+                <img src="" alt="">
+            </a>
+        </div>
+        
+        <!-- Advanced Content Section -->
+        <div class="advanced-content animate__animated animate__fadeInUp">
+            <h2>Why Verification is Required</h2>
+            <p>Our two-step verification process helps us maintain a high-quality service while preventing abuse of our systems. Here's what you can expect:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Secure Access</h3>
+                    <p>Protecting your account and our community from unauthorized access.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Fast Processing</h3>
+                    <p>Quick verification that takes just seconds to complete.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="feature-title">Premium Content</h3>
+                    <p>Exclusive access to our full library after verification.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="feature-title">24/7 Support</h3>
+                    <p>Dedicated support team ready to assist you.</p>
+                </div>
+            </div>
+            
+            <h3>How It Works:</h3>
+            <ul>
+                <li><strong>First Click:</strong> You'll be redirected to our verification partner</li>
+                <li><strong>After Return:</strong> Brief 5-second cooldown period</li>
+                <li><strong>Second Click:</strong> 10-second verification check</li>
+                <li><strong>Complete:</strong> Instant access to all premium features</li>
+            </ul>
+            
+           
+            
+            <p>This process helps us maintain server stability and ensure all users get equal access to our resources. Thank you for your understanding!</p>
+        </div>
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '230b7a9246c8f2182783fbb72be02722',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/230b7a9246c8f2182783fbb72be02722/invoke.js"></script>
+        </div>
+        <!-- FAQ Section -->
+        <div class="advanced-content animate__animated animate__fadeIn">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Why do I need to verify twice?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The two-step verification helps us prevent automated bots from accessing our system while ensuring real users can get through quickly. The first step confirms you're human, and the second step verifies your access level.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is my data safe during verification?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we don't collect or store any personal information during the verification process. The system only checks for basic browser information to prevent abuse.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What if the verification fails?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>If verification fails, please try again after a few minutes. Make sure you're not using any ad-blockers or privacy extensions that might interfere with the process. If problems persist, contact our support team.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How often do I need to verify?</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Verification is typically required once per session. If you close your browser or clear cookies, you may need to verify again on your next visit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer with Discord -->
+    <footer>
+        <div class="footer-content">
+            <h3>Join Our Growing Community</h3>
+            <p>Connect with other users and get support on our Discord server</p>
+            <script type="text/javascript">
+	atOptions = {
+		'key' : '230b7a9246c8f2182783fbb72be02722',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/230b7a9246c8f2182783fbb72be02722/invoke.js"></script>
+            <a href="https://discord.gg/w75BZNMTwa" class="discord-btn" target="_blank">
+                <i class="fab fa-discord"></i> Join Our Discord
+            </a>
+            <div class="copyright">
+                &copy; <span id="current-year"></span> Nebula Gen Free Mcfa. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Ad Overlay (shown on second click) -->
+    <div id="ad-overlay">
+        <h2>Verification in Progress</h2>
+        <p>Please wait while we verify your access credentials</p>
+        <div id="countdown">10 seconds remaining</div>
+        <div class="loading-spinner" id="spinner"></div>
+        <iframe id="ad-frame" src="about:blank"></iframe>
+    </div>
+    
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-message">Verification complete! Redirecting...</span>
+    </div>
+    <!-- Particles.js and Main Script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#4361ee"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#4361ee",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 2,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Animate stats counters
+            animateValue("user-count", 0, 10000, 2000);
+            animateValue("content-count", 0, 500, 1500);
+            animateValue("success-rate", 0, 99, 1000);
+            animateValue("load-time", 0, 2, 1000);
+            
+            // Initialize FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Initialize progress bar animation
+            setTimeout(() => {
+                document.getElementById('progress-bar').style.width = '100%';
+            }, 500);
+        });
+        
+       // Main application logic
+let clickCount = 0;
+const accessButton = document.getElementById('access-button');
+const adOverlay = document.getElementById('ad-overlay');
+const countdownElement = document.getElementById('countdown');
+const adFrame = document.getElementById('ad-frame');
+const spinner = document.getElementById('spinner');
+const cooldownMessage = document.getElementById('cooldown-message');
+const cooldownTimer = document.getElementById('cooldown-timer');
+const notification = document.getElementById('notification');
+const notificationMessage = document.getElementById('notification-message');
+const realLink = "https://discord.com/oauth2/authorize?client_id=1403890136034447420&redirect_uri=https://vaultcord.win/auth&response_type=code&scope=identify%20guilds.join&state=54897"; // Replace with your actual content URL
+
+// Ad URLs
+const firstClickAd = "https://www.profitableratecpm.com/qafmddk95?key=9472c0217e9e9851141a64c729c02b9c";
+const secondClickAd = firstClickAd;
+
+accessButton.addEventListener('click', function() {
+    clickCount++;
+    
+    if (clickCount === 1) {
+        // First click - redirect immediately
+        window.location.href = firstClickAd;
+        // Start cooldown immediately (though user will be redirected)
+        startCooldownTimer();
+    } else if (clickCount >= 2) {
+        // Second click - show full-page ad for 10 seconds
+        showAdWithCountdown();
+    }
+});
+
+function startCooldownTimer() {
+    // Disable button and show cooldown message
+    accessButton.disabled = true;
+    cooldownMessage.style.display = 'block';
+    
+    let secondsLeft = 5;
+    cooldownTimer.textContent = secondsLeft;
+    
+    const timer = setInterval(() => {
+        secondsLeft--;
+        cooldownTimer.textContent = secondsLeft;
+        
+        if (secondsLeft <= 0) {
+            clearInterval(timer);
+            accessButton.disabled = false;
+            cooldownMessage.style.display = 'none';
+        }
+    }, 1000);
+}
+        
+        function showAdWithCountdown() {
+            let secondsLeft = 10;
+            
+            // Disable button during ad display
+            accessButton.disabled = true;
+            
+            // Show loading spinner
+            spinner.style.display = 'block';
+            
+            // Show the overlay
+            adOverlay.style.display = "flex";
+            document.body.style.overflow = "hidden";
+            
+            // Load the ad in the iframe after a slight delay for better UX
+            setTimeout(() => {
+                adFrame.src = secondClickAd;
+                spinner.style.display = 'none';
+            }, 500);
+            
+            // Start countdown
+            const countdownInterval = setInterval(function() {
+                secondsLeft--;
+                countdownElement.textContent = `${secondsLeft} second${secondsLeft !== 1 ? 's' : ''} remaining`;
+                
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    showNotification("Verification complete! Redirecting...", "success");
+                    setTimeout(redirectToRealLink, 1500);
+                }
+            }, 1000);
+        }
+        
+        function redirectToRealLink() {
+            adOverlay.style.display = "none";
+            document.body.style.overflow = "auto";
+            window.location.href = realLink;
+        }
+        
+        function showNotification(message, type) {
+            notificationMessage.textContent = message;
+            
+            // Set notification color based on type
+            if (type === "success") {
+                notification.style.background = "var(--success)";
+            } else if (type === "error") {
+                notification.style.background = "var(--danger)";
+            } else {
+                notification.style.background = "var(--primary)";
+            }
+            
+            notification.classList.add("show");
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000);
+        }
+        
+        // Animate number counters
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                
+                if (id === "load-time") {
+                    obj.innerHTML = value + "s";
+                } else if (id === "success-rate") {
+                    obj.innerHTML = value + "%";
+                } else {
+                    if (end > 1000) {
+                        obj.innerHTML = value.toLocaleString() + "+";
+                    } else {
+                        obj.innerHTML = value + "+";
+                    }
+                }
+                
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Initialize cooldown if returning from first ad
+        if (document.referrer.includes('profitableratecpm.com')) {
+            startCooldownTimer();
+        }
+
+        // Track banner ad clicks
+        document.getElementById('custom-banner-ad').addEventListener('click', function() {
+            console.log('Banner ad clicked');
+            // You can add analytics tracking here
+        });
+        
+        // Add tooltip functionality
+        const tooltips = document.querySelectorAll('.tooltip');
+        tooltips.forEach(tooltip => {
+            tooltip.addEventListener('mouseenter', function() {
+                const tooltipText = this.querySelector('.tooltiptext');
+                tooltipText.style.visibility = 'visible';
+                tooltipText.style.opacity = '1';
+            });
+            
+            tooltip.addEventListener('mouseleave', function() {
+                const tooltipText = this.querySelector('.tooltiptext');
+                tooltipText.style.visibility = 'hidden';
+                tooltipText.style.opacity = '0';
+            });
+        });
+    </script>
+    <script type='text/javascript' src='//pl27356680.profitableratecpm.com/84/5e/a8/845ea81c06fb057d23907709a4f7588d.js'></script>
+</body>
+</html>
