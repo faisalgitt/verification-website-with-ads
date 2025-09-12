@@ -17,12 +17,7 @@ It’s designed for communities, Discord servers, and websites that want to **ga
 ✅ Progress bar, success notification, and tooltips  
 ✅ FAQ & Support section built-in  
 ✅ Discord community button included  
-✅ Fully mobile-friendly design  
-
----
-
-## 📸 Preview
-_Add a screenshot or GIF of your landing page here._  
+✅ Fully mobile-friendly design    
 
 ---
 
