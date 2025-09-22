@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nebula Gen Free Mcfa</title>
+    <title>Nebula Gen Free Mcfa - Premium Access</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -19,6 +19,7 @@
             --success: #4BB543;
             --warning: #ffcc00;
             --danger: #ff4444;
+            --premium: #ff9500;
         }
         
         * {
@@ -47,6 +48,92 @@
             left: 0;
             z-index: -1;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary);
+        }
+        
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
         }
         
         .container {
@@ -94,21 +181,106 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
+        /* Ad Containers */
         .ad-container {
             width: 100%;
             margin: 2rem 0;
             text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .ad-banner {
+            width: 100%;
+            min-height: 90px;
+            background: #f1f3ff;
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .ad-banner:hover {
+            background: #e8ebff;
+            transform: scale(1.01);
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: #888;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .ad-square {
+            width: 300px;
+            height: 250px;
+            background: #f1f3ff;
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem auto;
+        }
+        
+        .ad-skyscraper {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            height: 600px;
+            background: #f1f3ff;
+            border: 1px dashed var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+        
+        .ad-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 250px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .ad-popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #eee;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
         }
         
         #custom-banner-ad {
             display: inline-block;
-            hieght: auto%;
+            height: auto;
             width: 100%;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            position: center;
         }
         
         #custom-banner-ad:hover {
@@ -117,10 +289,9 @@
         }
         
         #custom-banner-ad img {
-            width: auto;
+            width: 100%;
             height: auto;
             display: block;
-			position: center;
         }
         
         .btn {
@@ -183,6 +354,11 @@
         
         .btn-danger {
             background: linear-gradient(to right, var(--danger), #cc0000);
+        }
+        
+        .btn-premium {
+            background: linear-gradient(to right, var(--premium), #ff7700);
+            box-shadow: 0 5px 15px rgba(255, 149, 0, 0.3);
         }
         
         .btn-outline {
@@ -630,6 +806,10 @@
             background: var(--danger);
         }
         
+        .badge-premium {
+            background: var(--premium);
+        }
+        
         /* Animation Keyframes */
         @keyframes spin {
             to { transform: rotate(360deg); }
@@ -637,7 +817,7 @@
         
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+           50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
         
@@ -653,6 +833,189 @@
         
         .pulse {
             animation: pulse 2s infinite;
+        }
+        
+        /* New Premium Section */
+        .premium-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .premium-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .premium-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .premium-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .premium-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .premium-feature i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffdd00;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .service-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Video Ad Container */
+        .video-ad-container {
+            width: 100%;
+            margin: 2rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-ad-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .newsletter-btn {
+            padding: 1rem 1.5rem;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-btn:hover {
+            background: #000;
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
         }
         
         /* Responsive Styles */
@@ -685,6 +1048,60 @@
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            
+            .ad-skyscraper {
+                display: none;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 50px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 50px;
+            }
+            
+            .premium-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 1rem 2rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
         }
         
         @media (max-width: 480px) {
@@ -715,497 +1132,985 @@
     <!-- Particles Background -->
     <div id="particles-js"></div>
     
-    <div class="container">
-        <header class="animate__animated animate__fadeIn">
-            <h1>Nebula Gen Verification</h1>
-            <p>Unlock exclusive content with our secure verification process</p>
-            <div class="progress-container">
-                <div class="progress-bar" id="progress-bar"></div>
-            </div>
-        </header>
-        
-        <!-- Ad Container -->
-        <div class="ad-container">
-			<a href="https://beta.publishers.adsterra.com/referral/GRiUx9H1dk" rel="nofollow"><img alt="banner" src="https://landings-cdn.adsterratech.com/referralBanners/gif/300x250_adsterra_reff.gif" /></a>
-        </div>
-        
-        <div class="content-card animate__animated animate__fadeInUp">
-            <h2>Instant Access to Premium Features <span class="badge pulse">NEW</span></h2>
-            <p>Gain immediate entry to our premium content library after completing our quick verification steps. Our system ensures fair access for all users while maintaining the highest quality standards.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <i class="fas fa-stars"></i> Nebula Gen
+            </a>
             
-            <!-- Custom Clickable Banner Ad -->
-            <div class="ad-container">
-                <script async="async" data-cfasync="false" src="//veneeringanguishwhipped.com/95942ecac9540ad7b9f6eafdce05056f/invoke.js"></script>
-<div id="container-95942ecac9540ad7b9f6eafdce05056f"></div>
-            </div>
+            <button class="mobile-menu-btn" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
             
-            <!-- Access Button -->
-            <div style="text-align: center;">
-                <button id="access-button" class="btn floating">
-                    <i class="fas fa-lock-open"></i> Click Here To Get Access
-                </button>
-                <div id="cooldown-message" class="cooldown-message">
-                    Please wait <span id="cooldown-timer">5</span> seconds before trying again
-                </div>
-            </div>
-                            <!-- Custom Banner Ad -->
-        
-        </div>
-        
-        <!-- Custom Banner Ad -->
-        <div id="custom-banner-ad" class="animate__animated animate__fadeIn">
-            <center><a href="https://dsc.gg/nebulagen" target="_blank">
-                <img src="nebula.png" alt="ad">
-            </a></center>
-        </div>
-        
-        <!-- Advanced Content Section -->
-        <div class="advanced-content animate__animated animate__fadeInUp">
-            <h2>Why Verification is Required</h2>
-            <p>Our two-step verification process helps us maintain a high-quality service while preventing abuse of our systems. Here's what you can expect:</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Secure Access</h3>
-                    <p>Protecting your account and our community from unauthorized access.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3 class="feature-title">Fast Processing</h3>
-                    <p>Quick verification that takes just seconds to complete.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3 class="feature-title">Premium Content</h3>
-                    <p>Exclusive access to our full library after verification.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="feature-title">24/7 Support</h3>
-                    <p>Dedicated support team ready to assist you.</p>
-                </div>
-            </div>
-            
-            <h3>How It Works:</h3>
-            <ul>
-                <li><strong>First Click:</strong> You'll be redirected to our verification partner</li>
-                <li><strong>After Return:</strong> Brief 5-second cooldown period</li>
-                <li><strong>Second Click:</strong> 10-second verification check</li>
-                <li><strong>Complete:</strong> Instant access to all premium features</li>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#" class="active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#" onclick="showPage('premium')">Premium</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
             </ul>
-            
-           
-            
-            <p>This process helps us maintain server stability and ensure all users get equal access to our resources. Thank you for your understanding!</p>
         </div>
-        <!-- Ad Container -->
-        <div class="ad-container">
-            <script type="text/javascript">
-	atOptions = {
-		'key' : '230b7a9246c8f2182783fbb72be02722',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//veneeringanguishwhipped.com/230b7a9246c8f2182783fbb72be02722/invoke.js"></script>
+    </nav>
+    
+    <!-- Skyscraper Ad (Right Sidebar) -->
+    
+    <div class="container">
+        <!-- Home Page -->
+        <div id="home-page" class="page-content active">
+            <header class="animate__animated animate__fadeIn">
+                <h1>Nebula Gen Verification</h1>
+                <p>Unlock exclusive content with our secure verification process</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </header>
+            
+            <!-- Top Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+                    
+                </div>
+            </div>
+            
+            <div class="content-card animate__animated animate__fadeInUp">
+                <h2>Instant Access to Premium Features <span class="badge pulse">NEW</span></h2>
+                <p>Gain immediate entry to our premium content library after completing our quick verification steps. Our system ensures fair access for all users while maintaining the highest quality standards.</p>
+                
+                <!-- Video Ad Placeholder -->
+                <div class="video-ad-container">
+                    <div class="ad-label">Video Advertisement</div>
+                    <div class="video-ad-placeholder">
+                        <i class="fas fa-play-circle" style="font-size: 3rem; margin-right: 1rem;"></i>
+                        Video Ad Content Loading...
+                    </div>
+                </div>
+                
+                <!-- Access Button -->
+                <div style="text-align: center;">
+                    <button id="access-button" class="btn floating">
+                        <i class="fas fa-lock-open"></i> Click Here To Get Access
+                    </button>
+                    <div id="cooldown-message" class="cooldown-message">
+                        Please wait <span id="cooldown-timer">5</span> seconds before trying again
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Square Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-square">
+
+                </div>
+            </div>
+            
+            <!-- Premium Section -->
+            <div class="premium-section animate__animated animate__fadeIn">
+                <h2><i class="fas fa-crown"></i> Upgrade to Premium</h2>
+                <p>Enjoy an ad-free experience with exclusive features and priority support</p>
+                
+                <div class="premium-features">
+                    <div class="premium-feature">
+                        <i class="fas fa-ad"></i>
+                        <h3>Ad-Free Experience</h3>
+                        <p>No interruptions from advertisements</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Faster Access</h3>
+                        <p>Skip verification wait times</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-star"></i>
+                        <h3>Exclusive Content</h3>
+                        <p>Access premium-only resources</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-premium">
+                    <i class="fas fa-gem"></i> Upgrade Now
+                </button>
+            </div>
+            
+            <!-- Custom Banner Ad -->
+            <div id="custom-banner-ad" class="animate__animated animate__fadeIn">
+                <div class="ad-label">Special Offer</div>
+                <a href="https://dsc.gg/nebulagen" target="_blank">
+                    <img src="https://via.placeholder.com/728x90/4361ee/ffffff?text=Nebula+Gen+Premium+Access" alt="ad" style="width: 100%">
+                </a>
+            </div>
+            
+            <!-- Advanced Content Section -->
+            <div class="advanced-content animate__animated animate__fadeInUp">
+                <h2>Why Verification is Required</h2>
+                <p>Our two-step verification process helps us maintain a high-quality service while preventing abuse of our systems. Here's what you can expect:</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="feature-title">Human Verification</h3>
+                        <p>Confirm you're a real user to access our premium content library.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Security Check</h3>
+                        <p>We ensure our platform remains secure for all legitimate users.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Quick Process</h3>
+                        <p>Our verification is designed to be completed in under 30 seconds.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="feature-title">Data Protection</h3>
+                        <p>We don't store personal information during the verification process.</p>
+                    </div>
+                </div>
+                
+                <h2>What You Get After Verification</h2>
+                <ul>
+                    <li>Full access to our premium content library</li>
+                    <li>Ability to generate unlimited resources</li>
+                    <li>Priority customer support</li>
+                    <li>Exclusive member-only discounts</li>
+                    <li>Early access to new features</li>
+                </ul>
+                
+                <!-- Stats Section -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">500K+</div>
+                        <div class="stat-label">Verified Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support Available</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">&lt;30s</div>
+                        <div class="stat-label">Average Verification</div>
+                    </div>
+                </div>
+                
+                <!-- Testimonials -->
+                <div class="testimonials">
+                    <h2>What Our Users Say</h2>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">This is the best verification system I've used. Quick, simple, and the content afterwards is definitely worth it!</p>
+                        <p class="testimonial-author">- Alex M.</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">I was skeptical at first, but the process was smooth and I got access to exactly what was promised.</p>
+                        <p class="testimonial-author">- Sarah K.</p>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">The premium content after verification is top-notch. I've been using it daily for my projects!</p>
+                        <p class="testimonial-author">- Michael T.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Newsletter Section -->
+            <div class="newsletter animate__animated animate__fadeIn">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for the latest updates, features, and exclusive content.</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+            
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
         </div>
-        <!-- FAQ Section -->
-        <div class="advanced-content animate__animated animate__fadeIn">
-            <h2>Frequently Asked Questions</h2>
+        
+        <!-- Services Page -->
+        <div id="services-page" class="page-content">
+            <header class="animate__animated animate__fadeIn">
+                <h1>Our Services</h1>
+                <p>Discover the range of premium services we offer to enhance your experience</p>
+            </header>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Why do I need to verify twice?</span>
-                    <i class="fas fa-chevron-down faq-toggle"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>The two-step verification helps us prevent automated bots from accessing our system while ensuring real users can get through quickly. The first step confirms you're human, and the second step verifies your access level.</p>
+            <!-- Top Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
                 </div>
             </div>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Is my data safe during verification?</span>
-                    <i class="fas fa-chevron-down faq-toggle"></i>
+            <div class="content-card animate__animated animate__fadeInUp">
+                <h2>Premium Content Access</h2>
+                <p>Unlock our extensive library of premium resources, tools, and content with our secure verification process.</p>
+                
+                <!-- Square Ad -->
+                <div class="ad-container">
+                    <div class="ad-label">Advertisement</div>
+                    <div class="ad-square">
+
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Yes, we don't collect or store any personal information during the verification process. The system only checks for basic browser information to prevent abuse.</p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3 class="service-title">Secure Verification</h3>
+                        <p class="service-description">Our advanced verification system ensures secure access to premium content while protecting user privacy.</p>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="service-title">Fast Processing</h3>
+                        <p class="service-description">Quick verification process that takes less than 30 seconds to complete for most users.</p>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="service-title">24/7 Support</h3>
+                        <p class="service-description">Round-the-clock customer support to assist with any issues or questions you may have.</p>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
                 </div>
             </div>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What if the verification fails?</span>
-                    <i class="fas fa-chevron-down faq-toggle"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>If verification fails, please try again after a few minutes. Make sure you're not using any ad-blockers or privacy extensions that might interfere with the process. If problems persist, contact our support team.</p>
+            <!-- Video Ad Placeholder -->
+            <div class="video-ad-container">
+                <div class="ad-label">Video Advertisement</div>
+                <div class="video-ad-placeholder">
+                    <i class="fas fa-play-circle" style="font-size: 3rem; margin-right: 1rem;"></i>
+                    Video Ad Content Loading...
                 </div>
             </div>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>How often do I need to verify?</span>
-                    <i class="fas fa-chevron-down faq-toggle"></i>
+            <div class="advanced-content animate__animated animate__fadeIn">
+                <h2>How Our Services Work</h2>
+                <p>Our streamlined process ensures you get access to premium content quickly and securely:</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-1"></i>
+                        </div>
+                        <h3 class="feature-title">Step 1: Click Access Button</h3>
+                        <p>Initiate the verification process by clicking the access button on our homepage.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-2"></i>
+                        </div>
+                        <h3 class="feature-title">Step 2: Complete Verification</h3>
+                        <p>Follow the simple on-screen instructions to complete the verification process.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-3"></i>
+                        </div>
+                        <h3 class="feature-title">Step 3: Access Content</h3>
+                        <p>Gain immediate access to our premium content library after successful verification.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Verification is typically required once per session. If you close your browser or clear cookies, you may need to verify again on your next visit.</p>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn" onclick="showPage('home')">
+                        <i class="fas fa-lock-open"></i> Get Access Now
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Premium Page -->
+        <div id="premium-page" class="page-content">
+            <header class="animate__animated animate__fadeIn">
+                <h1>Premium Membership</h1>
+                <p>Upgrade to enjoy an ad-free experience with exclusive benefits</p>
+            </header>
+            
+            <!-- Top Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
+            
+            <div class="premium-section animate__animated animate__fadeIn">
+                <h2><i class="fas fa-crown"></i> Go Premium Today</h2>
+                <p>Upgrade your experience with our premium membership and enjoy exclusive benefits</p>
+                
+                <div class="premium-features">
+                    <div class="premium-feature">
+                        <i class="fas fa-ad"></i>
+                        <h3>Ad-Free Browsing</h3>
+                        <p>Enjoy our platform without any advertisements</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Priority Access</h3>
+                        <p>Skip waiting times and get instant verification</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-star"></i>
+                        <h3>Exclusive Content</h3>
+                        <p>Access premium-only resources and tools</p>
+                    </div>
+                    <div class="premium-feature">
+                        <i class="fas fa-headset"></i>
+                        <h3>Priority Support</h3>
+                        <p>Get faster response times from our support team</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card animate__animated animate__fadeInUp">
+                <h2>Premium Membership Plans</h2>
+                <p>Choose the plan that works best for you and enjoy all the benefits of premium membership</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <h3 class="feature-title">Daily Pass</h3>
+                        <p>Perfect for short-term needs</p>
+                        <div class="stat-number">$2.99</div>
+                        <button class="btn btn-outline">Select Plan</button>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <h3 class="feature-title">Weekly Access</h3>
+                        <p>Great for temporary projects</p>
+                        <div class="stat-number">$9.99</div>
+                        <button class="btn">Select Plan</button>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Monthly Membership</h3>
+                        <p>Best value for regular users</p>
+                        <div class="stat-number">$19.99</div>
+                        <button class="btn btn-premium">Select Plan</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Square Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-square">
+
+                </div>
+            </div>
+            
+            <div class="advanced-content animate__animated animate__fadeIn">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, PayPal, and various cryptocurrency options for premium membership payments.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I cancel my premium membership?
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, you can cancel your premium membership at any time. For monthly memberships, cancellation will take effect at the end of your current billing cycle.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is there a free trial available?
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We occasionally offer free trials for new users. Please check our promotions page or follow us on social media to stay updated on current offers.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- About Page -->
+        <div id="about-page" class="page-content">
+            <header class="animate__animated animate__fadeIn">
+                <h1>About Nebula Gen</h1>
+                <p>Learn more about our mission, team, and values</p>
+            </header>
+            
+            <!-- Top Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
+            
+            <div class="content-card animate__animated animate__fadeInUp">
+                <h2>Our Story</h2>
+                <p>Nebula Gen was founded in 2020 with a mission to provide secure, reliable access to premium digital content through an innovative verification system.</p>
+                
+                <p>Our team of developers, security experts, and content creators work together to ensure that our platform remains at the forefront of technology while maintaining the highest standards of user privacy and security.</p>
+                
+                <!-- Square Ad -->
+                <div class="ad-container">
+                    <div class="ad-label">Advertisement</div>
+                    <div class="ad-square">
+
+                    </div>
+                </div>
+                
+                <h2>Our Values</h2>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Security</h3>
+                        <p>We prioritize the security and privacy of our users above all else.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Performance</h3>
+                        <p>Our systems are optimized for speed and reliability.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Community</h3>
+                        <p>We value our user community and actively seek feedback to improve our services.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Video Ad Placeholder -->
+            <div class="video-ad-container">
+                <div class="ad-label">Video Advertisement</div>
+                <div class="video-ad-placeholder">
+                    <i class="fas fa-play-circle" style="font-size: 3rem; margin-right: 1rem;"></i>
+                    Video Ad Content Loading...
+                </div>
+            </div>
+            
+            <div class="advanced-content animate__animated animate__fadeIn">
+                <h2>Our Team</h2>
+                <p>Meet the dedicated professionals behind Nebula Gen</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="feature-title">Alex Johnson</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="feature-title">Sarah Williams</h3>
+                        <p>Lead Developer</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Michael Chen</h3>
+                        <p>Security Specialist</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="feature-title">Emily Rodriguez</h3>
+                        <p>UI/UX Designer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Page -->
+        <div id="contact-page" class="page-content">
+            <header class="animate__animated animate__fadeIn">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for support or inquiries</p>
+            </header>
+            
+            <!-- Top Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
+                </div>
+            </div>
+            
+            <div class="content-card animate__animated animate__fadeInUp">
+                <h2>Get In Touch</h2>
+                <p>Have questions or need support? Our team is here to help you.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3 class="feature-title">Email Support</h3>
+                        <p>Send us an email and we'll respond within 24 hours.</p>
+                        <button class="btn btn-outline">support@nebulagen.com</button>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <h3 class="feature-title">Discord Community</h3>
+                        <p>Join our Discord server for real-time support and updates.</p>
+                        <a href="https://discord.gg/nebulagen" class="btn" target="_blank">Join Discord</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Knowledge Base</h3>
+                        <p>Browse our comprehensive documentation and FAQs.</p>
+                        <button class="btn btn-outline">View Documentation</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Square Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-square">
+
+                </div>
+            </div>
+            
+            <div class="advanced-content animate__animated animate__fadeIn">
+                <h2>Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How long does verification take?
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The verification process typically takes less than 30 seconds to complete. In some cases, it may take slightly longer depending on your internet connection and device.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is my data safe during verification?
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we take data security seriously. We do not collect or store personal information during the verification process. Our system only checks for basic browser information to prevent abuse.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I encounter issues during verification?
+                        <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you experience any issues during the verification process, please contact our support team through Discord or email. We're available 24/7 to assist you.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Banner Ad -->
+            <div class="ad-container">
+                <div class="ad-label">Sponsored Content</div>
+                <div class="ad-banner">
+
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Footer with Discord -->
-    <footer>
-        <div class="footer-content">
-            <h3>Join Our Growing Community</h3>
-            <p>Connect with other users and get support on our Discord server</p>
-            <script type="text/javascript">
-	atOptions = {
-		'key' : '230b7a9246c8f2182783fbb72be02722',
-		'format' : 'iframe',
-		'height' : 250,
-		'width' : 300,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//veneeringanguishwhipped.com/230b7a9246c8f2182783fbb72be02722/invoke.js"></script>
-            <a href="https://discord.gg/w75BZNMTwa" class="discord-btn" target="_blank">
-                <i class="fab fa-discord"></i> Join Our Discord
-            </a>
-            <div class="copyright">
-                &copy; <span id="current-year"></span> Nebula Gen Free Mcfa. All rights reserved.
-            </div>
-        </div>
-    </footer>
-    
-    <!-- Ad Overlay (shown on second click) -->
+    <!-- Ad Overlay -->
     <div id="ad-overlay">
-        <h2>Verification in Progress</h2>
-        <p>Please wait while we verify your access credentials</p>
-        <div id="countdown">10 seconds remaining</div>
-        <div class="loading-spinner" id="spinner"></div>
+        <h2 style="color: white;">Verifying...</h2>
+        <p style="color: #ccc;">Please complete the verification process to continue</p>
+        <div id="countdown">5</div>
+        <div class="loading-spinner"></div>
         <iframe id="ad-frame" src="about:blank"></iframe>
+        <button id="close-ad" class="btn btn-danger" style="margin-top: 1rem;">
+            <i class="fas fa-times"></i> Cancel Verification
+        </button>
     </div>
     
     <!-- Notification -->
     <div class="notification" id="notification">
         <i class="fas fa-check-circle"></i>
-        <span id="notification-message">Verification complete! Redirecting...</span>
+        <span id="notification-text">Verification successful!</span>
     </div>
-    <!-- Particles.js and Main Script -->
+    
+    <!-- Popup Ad -->
+    <div class="ad-popup" id="popup-ad">
+        <button class="close-btn" id="close-popup">&times;</button>
+        <h3>Special Offer!</h3>
+        <p>Upgrade to premium for an ad-free experience</p>
+        <button class="btn btn-premium" style="margin-top: 1rem;">Upgrade Now</button>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <h3>Nebula Gen Free Mcfa</h3>
+            <p>Premium content access through secure verification</p>
+            
+            <div class="footer-links">
+                <a href="#" onclick="showPage('home')" class="footer-link">Home</a>
+                <a href="#" onclick="showPage('services')" class="footer-link">Services</a>
+                <a href="#" onclick="showPage('premium')" class="footer-link">Premium</a>
+                <a href="#" onclick="showPage('about')" class="footer-link">About</a>
+                <a href="#" onclick="showPage('contact')" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <a href="https://dsc.gg/nebulagen" class="discord-btn" target="_blank">
+                <i class="fab fa-discord"></i> Join Our Discord
+            </a>
+            
+            <p class="copyright">© 2023 Nebula Gen Free Mcfa. All rights reserved.</p>
+        </div>
+    </footer>
+    
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Initialize particles.js
         document.addEventListener('DOMContentLoaded', function() {
             particlesJS('particles-js', {
-                "particles": {
-                    "number": {
-                        "value": 80,
-                        "density": {
-                            "enable": true,
-                            "value_area": 800
-                        }
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#4361ee" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#4361ee",
+                        opacity: 0.4,
+                        width: 1
                     },
-                    "color": {
-                        "value": "#4361ee"
-                    },
-                    "shape": {
-                        "type": "circle",
-                        "stroke": {
-                            "width": 0,
-                            "color": "#000000"
-                        },
-                        "polygon": {
-                            "nb_sides": 5
-                        }
-                    },
-                    "opacity": {
-                        "value": 0.5,
-                        "random": false,
-                        "anim": {
-                            "enable": false,
-                            "speed": 1,
-                            "opacity_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "size": {
-                        "value": 3,
-                        "random": true,
-                        "anim": {
-                            "enable": false,
-                            "speed": 40,
-                            "size_min": 0.1,
-                            "sync": false
-                        }
-                    },
-                    "line_linked": {
-                        "enable": true,
-                        "distance": 150,
-                        "color": "#4361ee",
-                        "opacity": 0.4,
-                        "width": 1
-                    },
-                    "move": {
-                        "enable": true,
-                        "speed": 2,
-                        "direction": "none",
-                        "random": false,
-                        "straight": false,
-                        "out_mode": "out",
-                        "bounce": false,
-                        "attract": {
-                            "enable": false,
-                            "rotateX": 600,
-                            "rotateY": 1200
-                        }
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
                     }
                 },
-                "interactivity": {
-                    "detect_on": "canvas",
-                    "events": {
-                        "onhover": {
-                            "enable": true,
-                            "mode": "grab"
-                        },
-                        "onclick": {
-                            "enable": true,
-                            "mode": "push"
-                        },
-                        "resize": true
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "grab" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
                     },
-                    "modes": {
-                        "grab": {
-                            "distance": 140,
-                            "line_linked": {
-                                "opacity": 1
-                            }
-                        },
-                        "bubble": {
-                            "distance": 400,
-                            "size": 40,
-                            "duration": 2,
-                            "opacity": 8,
-                            "speed": 3
-                        },
-                        "repulse": {
-                            "distance": 200,
-                            "duration": 0.4
-                        },
-                        "push": {
-                            "particles_nb": 4
-                        },
-                        "remove": {
-                            "particles_nb": 2
-                        }
+                    modes: {
+                        grab: { distance: 140, line_linked: { opacity: 1 } },
+                        push: { particles_nb: 4 }
                     }
                 },
-                "retina_detect": true
-            });
-
-            // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Animate stats counters
-            animateValue("user-count", 0, 10000, 2000);
-            animateValue("content-count", 0, 500, 1500);
-            animateValue("success-rate", 0, 99, 1000);
-            animateValue("load-time", 0, 2, 1000);
-            
-            // Initialize FAQ accordion
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                });
+                retina_detect: true
             });
             
-            // Initialize progress bar animation
-            setTimeout(() => {
-                document.getElementById('progress-bar').style.width = '100%';
-            }, 500);
+            // Show popup ad after 10 seconds
+            setTimeout(showPopupAd, 10000);
+            
+            // Initialize FAQ functionality
+            initFAQ();
+            
+            // Initialize mobile menu
+            initMobileMenu();
         });
         
-       // Main application logic
-let clickCount = 0;
-const accessButton = document.getElementById('access-button');
-const adOverlay = document.getElementById('ad-overlay');
-const countdownElement = document.getElementById('countdown');
-const adFrame = document.getElementById('ad-frame');
-const spinner = document.getElementById('spinner');
-const cooldownMessage = document.getElementById('cooldown-message');
-const cooldownTimer = document.getElementById('cooldown-timer');
-const notification = document.getElementById('notification');
-const notificationMessage = document.getElementById('notification-message');
-const realLink = "https://discord.com/oauth2/authorize?client_id=1403890136034447420&redirect_uri=https://vaultcord.win/auth&response_type=code&scope=identify%20guilds.join&state=60270"; // Replace with your actual content URL
-
-// Ad URLs
-const firstClickAd = "https://veneeringanguishwhipped.com/me0s7bpvck?key=02109cc6218a56f56011f85b71f95de4";
-const secondClickAd = firstClickAd;
-
-accessButton.addEventListener('click', function() {
-    clickCount++;
-    
-    if (clickCount === 1) {
-        // First click - redirect immediately
-        window.location.href = firstClickAd;
-        // Start cooldown immediately (though user will be redirected)
-        startCooldownTimer();
-    } else if (clickCount >= 2) {
-        // Second click - show full-page ad for 10 seconds
-        showAdWithCountdown();
-    }
-});
-
-function startCooldownTimer() {
-    // Disable button and show cooldown message
-    accessButton.disabled = true;
-    cooldownMessage.style.display = 'block';
-    
-    let secondsLeft = 5;
-    cooldownTimer.textContent = secondsLeft;
-    
-    const timer = setInterval(() => {
-        secondsLeft--;
-        cooldownTimer.textContent = secondsLeft;
+        // DOM Elements
+        const accessButton = document.getElementById('access-button');
+        const adOverlay = document.getElementById('ad-overlay');
+        const countdownElement = document.getElementById('countdown');
+        const closeAdButton = document.getElementById('close-ad');
+        const cooldownMessage = document.getElementById('cooldown-message');
+        const cooldownTimer = document.getElementById('cooldown-timer');
+        const notification = document.getElementById('notification');
+        const notificationText = document.getElementById('notification-text');
+        const progressBar = document.getElementById('progress-bar');
+        const popupAd = document.getElementById('popup-ad');
+        const closePopup = document.getElementById('close-popup');
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
         
-        if (secondsLeft <= 0) {
-            clearInterval(timer);
-            accessButton.disabled = false;
-            cooldownMessage.style.display = 'none';
-        }
-    }, 1000);
-}
-        
-        function showAdWithCountdown() {
-            let secondsLeft = 10;
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
             
-            // Disable button during ad display
-            accessButton.disabled = true;
+            // Show selected page
+            document.getElementById(`${pageId}-page`).classList.add('active');
             
-            // Show loading spinner
-            spinner.style.display = 'block';
+            // Update active nav link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.classList.remove('active');
+            });
             
-            // Show the overlay
-            adOverlay.style.display = "flex";
-            document.body.style.overflow = "hidden";
+            // Find and activate the corresponding nav link
+            const activeNavItem = Array.from(navItems).find(item => 
+                item.getAttribute('onclick')?.includes(pageId)
+            );
             
-            // Load the ad in the iframe after a slight delay for better UX
-            setTimeout(() => {
-                adFrame.src = secondClickAd;
-                spinner.style.display = 'none';
-            }, 500);
-            
-            // Start countdown
-            const countdownInterval = setInterval(function() {
-                secondsLeft--;
-                countdownElement.textContent = `${secondsLeft} second${secondsLeft !== 1 ? 's' : ''} remaining`;
-                
-                if (secondsLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    showNotification("Verification complete! Redirecting...", "success");
-                    setTimeout(redirectToRealLink, 1500);
-                }
-            }, 1000);
-        }
-        
-        function redirectToRealLink() {
-            adOverlay.style.display = "none";
-            document.body.style.overflow = "auto";
-            window.location.href = realLink;
-        }
-        
-        function showNotification(message, type) {
-            notificationMessage.textContent = message;
-            
-            // Set notification color based on type
-            if (type === "success") {
-                notification.style.background = "var(--success)";
-            } else if (type === "error") {
-                notification.style.background = "var(--danger)";
-            } else {
-                notification.style.background = "var(--primary)";
+            if (activeNavItem) {
+                activeNavItem.classList.add('active');
             }
             
-            notification.classList.add("show");
+            // Close mobile menu if open
+            navLinks.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Mobile Menu Toggle
+        function initMobileMenu() {
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        }
+        
+        // Verification Process
+        if (accessButton) {
+            accessButton.addEventListener('click', function() {
+                // Disable button to prevent multiple clicks
+                accessButton.disabled = true;
+                
+                // Show loading state
+                const originalText = accessButton.innerHTML;
+                accessButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                
+                // Simulate processing delay
+                setTimeout(function() {
+                    // Show ad overlay
+                    adOverlay.style.display = 'flex';
+                    
+                    // Start countdown
+                    let countdown = 5;
+                    countdownElement.textContent = countdown;
+                    
+                    const countdownInterval = setInterval(function() {
+                        countdown--;
+                        countdownElement.textContent = countdown;
+                        
+                        if (countdown <= 0) {
+                            clearInterval(countdownInterval);
+                            
+                            // Simulate successful verification
+                            simulateVerification();
+                        }
+                    }, 1000);
+                    
+                    // Reset button
+                    accessButton.innerHTML = originalText;
+                    accessButton.disabled = false;
+                }, 1500);
+            });
+        }
+        
+        // Close ad overlay
+        closeAdButton.addEventListener('click', function() {
+            adOverlay.style.display = 'none';
+            showNotification('Verification cancelled', 'warning');
+        });
+        
+        // Close popup ad
+        closePopup.addEventListener('click', function() {
+            popupAd.style.display = 'none';
+        });
+        
+        // Show popup ad
+        function showPopupAd() {
+            popupAd.style.display = 'block';
+        }
+        
+        // Simulate verification process
+        function simulateVerification() {
+            // Show loading spinner
+            document.querySelector('.loading-spinner').style.display = 'block';
+            countdownElement.style.display = 'none';
+            
+            // Update progress bar
+            let progress = 0;
+            const progressInterval = setInterval(function() {
+                progress += 5;
+                progressBar.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                    
+                    // Simulate completion
+                    setTimeout(function() {
+                        adOverlay.style.display = 'none';
+                        showNotification('Verification successful! Redirecting...', 'success');
+                        
+                        // Simulate redirect after a delay
+                        setTimeout(function() {
+                            window.location.href = 'https://dsc.gg/nebulagen';
+                        }, 2000);
+                    }, 1000);
+                }
+            }, 100);
+        }
+        
+        // Show notification
+        function showNotification(message, type = 'success') {
+            notificationText.textContent = message;
+            
+            // Set color based on type
+            if (type === 'success') {
+                notification.style.background = 'linear-gradient(to right, var(--success), #3a9a3a)';
+            } else if (type === 'warning') {
+                notification.style.background = 'linear-gradient(to right, var(--warning), #e6b800)';
+            } else if (type === 'error') {
+                notification.style.background = 'linear-gradient(to right, var(--danger), #cc0000)';
+            }
+            
+            notification.classList.add('show');
             
             // Hide after 3 seconds
-            setTimeout(() => {
-                notification.classList.remove("show");
+            setTimeout(function() {
+                notification.classList.remove('show');
             }, 3000);
         }
         
-        // Animate number counters
-        function animateValue(id, start, end, duration) {
-            const obj = document.getElementById(id);
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                
-                if (id === "load-time") {
-                    obj.innerHTML = value + "s";
-                } else if (id === "success-rate") {
-                    obj.innerHTML = value + "%";
-                } else {
-                    if (end > 1000) {
-                        obj.innerHTML = value.toLocaleString() + "+";
-                    } else {
-                        obj.innerHTML = value + "+";
-                    }
-                }
-                
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-        
-        // Initialize cooldown if returning from first ad
-        if (document.referrer.includes('profitableratecpm.com')) {
-            startCooldownTimer();
-        }
-
-        // Track banner ad clicks
-        document.getElementById('custom-banner-ad').addEventListener('click', function() {
-            console.log('Banner ad clicked');
-            // You can add analytics tracking here
-        });
-        
-        // Add tooltip functionality
-        const tooltips = document.querySelectorAll('.tooltip');
-        tooltips.forEach(tooltip => {
-            tooltip.addEventListener('mouseenter', function() {
-                const tooltipText = this.querySelector('.tooltiptext');
-                tooltipText.style.visibility = 'visible';
-                tooltipText.style.opacity = '1';
-            });
+        // Initialize FAQ functionality
+        function initFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
             
-            tooltip.addEventListener('mouseleave', function() {
-                const tooltipText = this.querySelector('.tooltiptext');
-                tooltipText.style.visibility = 'hidden';
-                tooltipText.style.opacity = '0';
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Toggle active class
+                    item.classList.toggle('active');
+                });
             });
-        });
+        }
+        
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    const animation = element.getAttribute('data-animation') || 'animate__fadeInUp';
+                    element.classList.add(animation);
+                }
+            });
+        }
+        
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        // Initial check
+        animateOnScroll();
     </script>
-    <script type='text/javascript' src='//veneeringanguishwhipped.com/84/5e/a8/845ea81c06fb057d23907709a4f7588d.js'></script>
 </body>
 </html>
